@@ -12,7 +12,9 @@ struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
     
-    var einkaufsliste = ["Äpfel", "Bananen", "Zitronen", "Mehl", "Spülmittel"]
+    @State private var einkaufsliste = ["Äpfel", "Bananen", "Zitronen", "Mehl", "Spülmittel"]
+    
+    @State private var neuerArtikel = ""
 
     var body: some View {
         NavigationView {
@@ -21,6 +23,16 @@ struct ContentView: View {
             }
             .navigationTitle("Einkaufsliste")
         }
+        HStack {
+            TextField("Neuer Artikel", text:$neuerArtikel)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+            Button("Ok", action: {
+                if !neuerArtikel.isEmpty {
+                    einkaufsliste.append(neuerArtikel)
+                }
+            })
+        }
+        .padding(.horizontal)
     }
 
     private func addItem() {
