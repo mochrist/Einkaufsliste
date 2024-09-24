@@ -29,6 +29,7 @@ struct ContentView: View {
             Button("Ok", action: {
                 if !neuerArtikel.isEmpty {
                     einkaufsliste.append(neuerArtikel)
+                    UserDefaults.standard.set(einkaufsliste, forKey: "EinkaufslisteStorage")
                 }
             })
         }
