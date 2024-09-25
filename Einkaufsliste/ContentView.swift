@@ -15,6 +15,12 @@ struct ContentView: View {
     @State private var einkaufsliste = ["Äpfel", "Bananen", "Zitronen", "Mehl", "Spülmittel"]
     
     @State private var neuerArtikel = ""
+    
+    init() {
+        if let savedList = UserDefaults.standard.array(forKey: "EinkaufslisteStorage") as? [String] {
+            _einkaufsliste = State(initialValue: savedList)
+        }
+    }
 
     var body: some View {
         NavigationView {
