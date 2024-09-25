@@ -27,7 +27,7 @@ struct ContentView: View {
             List(einkaufsliste, id: \.self) {
                 artikel in Text(artikel)
             }
-            .navigationTitle("Einkaufsliste Test")
+            .navigationTitle("Einkaufsliste")
         }
         HStack {
             TextField("Neuer Artikel", text:$neuerArtikel)
